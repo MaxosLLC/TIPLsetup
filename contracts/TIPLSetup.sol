@@ -25,25 +25,25 @@ contract TIPLSetup {
     uint24  constant POOL_FEE       = 10000;   // 1.00%
     int24   constant TICK_SPACING   = 200;
 
-    // Pre-computed tick values for $0.01–$10 range (rounded to tickSpacing=200)
+    // Pre-computed tick values for $0.01–$1,000 range (rounded to tickSpacing=200)
     // TIPL has 18 decimals, USDC has 6 decimals.
     //
     // If TIPL < USDC (TIPL is currency0):
     //   P = USDC_raw / TIPL_raw
-    //   $0.01 → tick ≈ -322,400; $10 → tick ≈ -253,400
+    //   $0.01 → tick ≈ -322,400; $1000 → tick ≈ -207,400
     int24 constant TICK_LOWER_TIPL_IS_C0 = -322400;
-    int24 constant TICK_UPPER_TIPL_IS_C0 = -253400;
+    int24 constant TICK_UPPER_TIPL_IS_C0 = -207400;
 
     // If USDC < TIPL (USDC is currency0):
     //   P = TIPL_raw / USDC_raw
-    //   $0.01 → tick ≈ 253,400; $10 → tick ≈ 322,400
-    int24 constant TICK_LOWER_USDC_IS_C0 = 253400;
+    //   $1000 → tick ≈ 207,400; $0.01 → tick ≈ 322,400
+    int24 constant TICK_LOWER_USDC_IS_C0 = 207400;
     int24 constant TICK_UPPER_USDC_IS_C0 = 322400;
 
     // sqrtPriceX96 at tick bounds — used for computing liquidity from LP_AMOUNT
     uint160 constant SQRT_PRICE_LOWER_TIPL_C0 = 7_914_118_485_757_900_357_632;       // tick -322400
-    uint160 constant SQRT_PRICE_UPPER_TIPL_C0 = 249_254_842_934_311_822_295_040;      // tick -253400
-    uint160 constant SQRT_PRICE_LOWER_USDC_C0 = 25_183_469_503_242_882_170_212_176_944_431_104;  // tick 253400
+    uint160 constant SQRT_PRICE_UPPER_TIPL_C0 = 2_485_827_413_564_259_143_490_240;     // tick -207400
+    uint160 constant SQRT_PRICE_LOWER_USDC_C0 = 2_525_155_890_201_713_880_629_425_236_587_124;   // tick 207400
     uint160 constant SQRT_PRICE_UPPER_USDC_C0 = 793_152_347_588_122_760_560_699_178_810_867_712; // tick 322400
 
     // sqrtPriceX96 for pool initialization — MUST be outside LP range
